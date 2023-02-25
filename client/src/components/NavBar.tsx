@@ -1,12 +1,13 @@
 import { Navbar } from "flowbite-react";
 import { Button } from "flowbite-react/lib/esm/components";
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Context } from "..";
 import { SHOP_ROUTE } from "../utils/consts";
 
 const NavBar = () => {
   const { user } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <div>
       <Navbar fluid={true} rounded={true} className="">
@@ -26,10 +27,12 @@ const NavBar = () => {
           <Navbar.Link href="/navbars">Pricing</Navbar.Link>
           <Navbar.Link href="/navbars">Contact</Navbar.Link>
         </Navbar.Collapse>
-        {!user.isAuth ? (
+        {!user?.isAuth ? (
           <div className="flex md:order-2">
             <Button>Админ панель</Button>
-            <Button className="ml-4">Войти</Button>
+            <Button onClick={() => navigate("/login")} className="ml-4">
+              Войти
+            </Button>
           </div>
         ) : (
           <Button>Авторизация</Button>
