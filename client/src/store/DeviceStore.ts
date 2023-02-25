@@ -4,6 +4,8 @@ export default class DeviceStore {
   private _types: Object[];
   private _devices: Object[];
   private _brands: Object[];
+  private _selectedType: any;
+  private _selectedBrand: {};
 
   constructor() {
     this._types = [
@@ -14,6 +16,14 @@ export default class DeviceStore {
       {
         id: 2,
         name: "Смартфоны",
+      },
+      {
+        id: 3,
+        name: "Ноутбуки",
+      },
+      {
+        id: 4,
+        name: "Телевизоры",
       },
     ];
     this._brands = [
@@ -32,7 +42,8 @@ export default class DeviceStore {
         name: "12_pro",
         price: 100000,
         rating: 0,
-        img: "6cf34495-e6bd-47ee-96b7-ec2eda24b6ae.jpg",
+        // img: "6cf34495-e6bd-47ee-96b7-ec2eda24b6ae.jpg",
+        img: "https://flowbite.com/docs/images/blog/image-1.jpg",
         createdAt: "2023-02-05T13:15:17.558Z",
         updatedAt: "2023-02-05T13:15:17.558Z",
         basketId: null,
@@ -44,7 +55,7 @@ export default class DeviceStore {
         name: "Aspire 5 A515",
         price: 67000,
         rating: 0,
-        img: "029a1648-5514-4484-89b7-81ad1351fb98.jpg",
+        img: "https://flowbite.com/docs/images/blog/image-1.jpg",
         createdAt: "2023-02-11T08:08:25.805Z",
         updatedAt: "2023-02-11T08:08:25.805Z",
         basketId: null,
@@ -52,6 +63,8 @@ export default class DeviceStore {
         brandId: 2,
       },
     ];
+    this._selectedType = {};
+    this._selectedBrand = {};
     makeAutoObservable(this);
   }
 
@@ -74,5 +87,19 @@ export default class DeviceStore {
   }
   public set brands(value: Object[]) {
     this._brands = value;
+  }
+
+  public get selectedType(): any {
+    return this._selectedType;
+  }
+  public set selectedType(value: any) {
+    this._selectedType = value;
+  }
+
+  public get selectedBrand(): {} {
+    return this._selectedBrand;
+  }
+  public set selectedBrand(value: {}) {
+    this._selectedBrand = value;
   }
 }

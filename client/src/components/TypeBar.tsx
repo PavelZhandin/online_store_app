@@ -8,10 +8,6 @@ const TypeBar = observer(() => {
   return (
     <div className="w-100">
       <ListGroup>
-        {/* <ListGroup.Item>Profile</ListGroup.Item>
-        <ListGroup.Item>Settings</ListGroup.Item>
-        <ListGroup.Item>Messages</ListGroup.Item>
-        <ListGroup.Item>Download</ListGroup.Item> */}
         {device?.types.map((type: any) => (
           <ListGroup.Item
             style={{ cursor: "pointer" }}

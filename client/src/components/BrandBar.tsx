@@ -11,11 +11,11 @@ const BrandBar = observer(() => {
         {device?.brands.map((brand: any) => (
           <Card
             style={{
+              cursor: "pointer",
               borderColor: brand.id === device.selectedBrand ? "lightBlue" : "",
             }}
             onClick={() => (device.selectedBrand = brand.id)}
             key={brand.id}
-            href="#"
             className="m-3"
           >
             <h5 className="font-bold tracking-tight text-gray-900 dark:text-white">

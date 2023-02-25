@@ -19,13 +19,13 @@ const NavBar = () => {
 
         <Navbar.Toggle className="flex order-3" />
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
+          <Navbar.Link href="/" active={true}>
             Home
           </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <Navbar.Link href="/">About</Navbar.Link>
+          <Navbar.Link href="/">Services</Navbar.Link>
+          <Navbar.Link href="/">Pricing</Navbar.Link>
+          <Navbar.Link href="/">Contact</Navbar.Link>
         </Navbar.Collapse>
         {!user?.isAuth ? (
           <div className="flex md:order-2">
