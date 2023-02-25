@@ -5,7 +5,10 @@ import App from "./App";
 import UserStore from "./store/UserStore";
 import DeviceStore from "./store/DeviceStore";
 
-export const Context = createContext<any>(null);
+export const Context = createContext<{
+  user: UserStore | null;
+  device: DeviceStore | null;
+}>({ user: null, device: null });
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
