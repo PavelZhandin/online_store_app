@@ -1,9 +1,18 @@
 import { makeAutoObservable } from "mobx";
 
+export type Type = {
+  id: number;
+  name: string;
+};
+export type Brand = {
+  id: number;
+  name: string;
+};
+
 export default class DeviceStore {
-  private _types: Object[];
+  private _types: Type[];
   private _devices: Object[];
-  private _brands: Object[];
+  private _brands: Brand[];
   private _selectedType: any;
   private _selectedBrand: {};
 
@@ -68,10 +77,10 @@ export default class DeviceStore {
     makeAutoObservable(this);
   }
 
-  public get types(): Object[] {
+  public get types(): Type[] {
     return this._types;
   }
-  public set types(value: Object[]) {
+  public set types(value: Type[]) {
     this._types = value;
   }
 
@@ -82,10 +91,10 @@ export default class DeviceStore {
     this._devices = value;
   }
 
-  public get brands(): Object[] {
+  public get brands(): Brand[] {
     return this._brands;
   }
-  public set brands(value: Object[]) {
+  public set brands(value: Brand[]) {
     this._brands = value;
   }
 
