@@ -1,20 +1,18 @@
-import { Request, Response, NextFunction } from "express";
 const jwt = require("jsonwebtoken");
 
-module.exports = function (req, res: Response, next: NextFunction) {
+module.exports = function (req, res, next) {
   if (req.method === "OPTIONS") {
     next();
   }
-
   try {
-    const token = req.headers.authorization.split(" ")[1]; //Bearer asdfasfeq
+    const token = req.headers.authorization.split(" ")[1]; // Bearer asfasnfkajsfnjk
     if (!token) {
-      res.status(401).json({ message: "Не авторизован" });
+      return res.status(401).json({ message: "Не авторизован" });
     }
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
-  } catch (err) {
-    res.status(403).json({ message: "Не авторизован" });
+  } catch (e) {
+    res.status(401).json({ message: "Не авторизован" });
   }
 };

@@ -37,17 +37,17 @@ export default class DeviceStore {
     ];
     this._brands = [
       {
-        id: 1,
+        id: 5,
         name: "Samsung",
       },
       {
-        id: 2,
+        id: 6,
         name: "Apple",
       },
     ];
     this._devices = [
       {
-        id: 1,
+        id: 7,
         name: "12_pro",
         price: 100000,
         rating: 0,
@@ -60,7 +60,7 @@ export default class DeviceStore {
         brandId: 1,
       },
       {
-        id: 2,
+        id: 8,
         name: "Aspire 5 A515",
         price: 67000,
         rating: 0,

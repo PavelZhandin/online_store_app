@@ -41,7 +41,7 @@ const NavBar = observer(() => {
           </div>
         )}{" "}
         {!user?.isAuth && (
-          <Button onClick={() => user?.setIsAuth(true)}>Авторизация</Button>
+          <Button onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
         )}
       </Navbar>
     </div>
