@@ -1,5 +1,6 @@
 import { Button, Label, Modal, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
+import { createType } from "../../http/deviceApi";
 
 type Props = {
   show: boolean;
@@ -7,6 +8,15 @@ type Props = {
 };
 
 const CreateType = ({ show, onHide }: Props) => {
+  const [value, setValue] = useState<string>("");
+
+  const addType = () => {
+    createType({ name: value }).then((data) => {
+      setValue("");
+      onHide();
+    });
+  };
+
   return (
     <div>
       <Modal show={show} onClose={onHide}>
@@ -15,11 +25,11 @@ const CreateType = ({ show, onHide }: Props) => {
           <div className="sapce-y-6">
             <form>
               <div>
-                <div className="mb-2 block">
-                  <Label htmlFor="type_name" value="Your email" />
-                </div>
+                <div className="mb-2 block"></div>
                 <TextInput
                   id="type_name"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
                   type="text"
                   placeholder="Введите название типа"
                   required={true}
@@ -29,10 +39,10 @@ const CreateType = ({ show, onHide }: Props) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onHide}>Добавить</Button>
           <Button color="gray" onClick={onHide}>
             Закрыть
           </Button>
+          <Button onClick={addType}>Добавить</Button>
         </Modal.Footer>
       </Modal>
     </div>

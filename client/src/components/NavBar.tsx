@@ -14,6 +14,12 @@ import {
 const NavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
+
+  const logOut = () => {
+    user?.setIsAuth(false);
+    user?.setUser({});
+  };
+
   return (
     <div>
       <Navbar fluid={true} rounded={true} className="">
@@ -35,7 +41,7 @@ const NavBar = observer(() => {
         {user?.isAuth && (
           <div className="flex md:order-2">
             <Button onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button>
-            <Button onClick={() => navigate(LOGIN_ROUTE)} className="ml-4">
+            <Button onClick={() => logOut()} className="ml-4">
               Выйти
             </Button>
           </div>

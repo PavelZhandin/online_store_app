@@ -1,52 +1,23 @@
 import { Button, Card } from "flowbite-react";
 import bigStar from "../assets/big_star.png";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { fetchDevices, fetchOneDevice } from "../http/deviceApi";
 
 const DevicePage = () => {
-  const device = {
-    id: 1,
-    name: "12_pro",
-    price: 100000,
-    rating: 0,
-    // img: "6cf34495-e6bd-47ee-96b7-ec2eda24b6ae.jpg",
-    img: "https://flowbite.com/docs/images/blog/image-1.jpg",
-    createdAt: "2023-02-05T13:15:17.558Z",
-    updatedAt: "2023-02-05T13:15:17.558Z",
-    basketId: null,
-    typeId: 2,
-    brandId: 1,
-  };
+  const [device, setDevice] = useState<any>({ info: [] });
+  const { id } = useParams();
 
-  const description = [
-    {
-      id: 1,
-      title: "Оперативная память",
-      description: "5 гб",
-    },
-    {
-      id: 2,
-      title: "Оперативная память",
-      description: "5 гб",
-    },
-    {
-      id: 3,
-      title: "Оперативная память",
-      description: "5 гб",
-    },
-    {
-      id: 4,
-      title: "Оперативная память",
-      description: "5 гб",
-    },
-  ];
-
+  useEffect(() => {
+    fetchOneDevice(Number(id)).then((data) => setDevice(data));
+  }, []);
   return (
     <>
       <div className="grid grid-cols-12 mt-4 ml-4">
         <div className="col-span-4">
           <img
-            // className="max-w-lg h-auto"
             alt="product_image.png"
-            src={device.img}
+            src={process.env.REACT_APP_API_URL + device.img}
           />
         </div>
         <div className="col-span-4">
@@ -72,7 +43,7 @@ const DevicePage = () => {
       </div>
       <div className="flex flex-col m-4">
         <h1 className="text-3xl mb-2">Характеристики</h1>
-        {description.map((info, index) => (
+        {device.info.map((info: any, index: number) => (
           <div
             key={info.id}
             style={{

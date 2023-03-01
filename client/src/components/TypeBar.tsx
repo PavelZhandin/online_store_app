@@ -16,6 +16,7 @@ const TypeBar = observer(() => {
             onClick={() => (device.selectedType = type.id)}
           >
             {type.name}
+            {console.log(device.selectedType)}
           </ListGroup.Item>
         ))}
       </ListGroup>

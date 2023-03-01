@@ -10,9 +10,9 @@ const DeviceList = observer(() => {
   return (
     <>
       <ListGroup className="flex flex-wrap">
-        {device?.devices.map((deviceItem: any) => (
+        {device?.devices.map((deviceItem: any, index) => (
           <>
-            <DeviceItem key={deviceItem.id} device={deviceItem} />
+            <DeviceItem key={deviceItem.id + index} device={deviceItem} />
           </>
         ))}
       </ListGroup>

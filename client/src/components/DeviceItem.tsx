@@ -19,17 +19,17 @@ const DeviceItem = ({ device }: Prop) => {
           cursor: "pointer",
         }}
       >
-        <Card imgSrc={device.img}>
+        <Card imgSrc={process.env.REACT_APP_API_URL + device.img}>
           <div className="flex justify-between items-end ">
             <h5 className="font-bold tracking-tight text-gray-900 dark:text-white">
-              Samsung...
+              {device.name}
             </h5>
             <div className="flex items-center">
               <div>{device.rating}</div>
               <img className="w-4 h-4" src={star} alt={"star.png"} />
             </div>
           </div>
-          <div className="text-start">{device.name}</div>
+          {/* <div className="text-start">{device.name}</div> */}
         </Card>
       </ListGroup.Item>
     </>
